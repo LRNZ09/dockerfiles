@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+
+  # --- Snakeviz ---
+
+  snakeviz:
+    container_name: lrnz09.snakeviz
+    environment: {
+      SNAKEVIZ_PORT: '80',
+      SNAKEVIZ_PROFILE: /tmp/program.prof,
+    }
+    entrypoint: /tmp/docker-entrypoint.sh
+    image: python:alpine
+    ports: ['80:80']
+    restart: on-failure
+    volumes: [
+      './snakeviz/docker-entrypoint.sh:/tmp/docker-entrypoint.sh:ro',
+      './snakeviz/program.prof:/tmp/program.prof:ro',
+    ]
