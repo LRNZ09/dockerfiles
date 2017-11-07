@@ -1,0 +1,35 @@
+{
+  "url": "https://lrnz09.me/",
+  "server": {
+    "port": 2368,
+    "host": "0.0.0.0"
+  },
+  "database": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "/var/lib/ghost/content/data/ghost.db"
+    }
+  },
+  "mail": {
+    "transport": "SMTP",
+    "from": "noreply@mail.lrnz09.me",
+    "options": {
+      "service": "Mailgun",
+      "port": 2525,
+      "auth": {
+          "user": "postmaster@mail.lrnz09.me",
+          "pass": ""
+      }
+    }
+  },
+  "logging": {
+    "transports": [
+      "file",
+      "stdout"
+    ]
+  },
+  "process": "systemd",
+  "paths": {
+    "contentPath": "/var/lib/ghost/content"
+  }
+}

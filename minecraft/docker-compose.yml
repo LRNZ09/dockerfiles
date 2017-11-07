@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+
+  bungeecord:
+    depends_on: [spigot]
+    deploy:
+      mode: replicated
+      placement:
+        constraints: [node.role == manager]
+      replicas: 1
+      restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
+      update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
+    image: itzg/bungeecord
+    ports: ['2052:25577', '2052:25577/udp']
+    restart: on-failure
+    volumes: ['./bungeecord/:/server']
+
+  spigot:
+    deploy:
+      mode: replicated
+      placement:
+        constraints: [node.role == worker]
+      replicas: 1
+      restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
+      update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
+    environment: {
+      ALLOW_NETHER: 'true',
+      CONSOLE: 'false',
+      DIFFICULTY: hard,
+      EULA: 'true',
+      FORCE_GAMEMODE: 'true',
+      GENERATE_STRUCTURES: 'true',
+      GUI: 'false',
+      JVM_XX_OPTS: '-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts',
+      LEVEL: world,
+      MEMORY: 1G,
+      MODE: survival,
+      ONLINE_MODE: 'false',
+      OPS: lrnz09,
+      PVP: 'false',
+      SEED: '-2130460257',
+      SPAWN_ANIMALS: 'true',
+      SPAWN_MONSTERS: 'true',
+      SPAWN_NPCS: 'true',
+      SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar',
+      TYPE: spigot,
+      VIEW_DISTANCE: '9'
+    }
+    expose: ['25565']
+    image: itzg/minecraft-server
+    restart: on-failure
+    volumes: ['./spigot:/data']

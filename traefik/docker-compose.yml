@@ -1,0 +1,18 @@
+version: '3.4'
+
+networks:
+
+  traefik_default:
+    external: true
+
+services:
+
+  traefik:
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    image: traefik:alpine
+    networks: [traefik_default]
+    ports: ['80:80']
+    restart: on-failure
+    volumes: ['/var/run/docker.sock:/var/run/docker.sock']
