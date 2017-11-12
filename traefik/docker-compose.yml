@@ -1,18 +1,13 @@
 version: '3.4'
 
-networks:
-
-  traefik_default:
-    external: true
-
 services:
 
   traefik:
+    command: --docker --docker.swarmmode --docker.domain=lrnz09.me --docker.watch --logLevel=DEBUG --web
     deploy:
       placement:
         constraints: [node.role == manager]
     image: traefik:alpine
-    networks: [traefik_default]
-    ports: ['80:80']
+    ports: ['80:80', '8080:8080']
     restart: on-failure
     volumes: ['/var/run/docker.sock:/var/run/docker.sock']
