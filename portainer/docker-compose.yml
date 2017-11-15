@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+
+  portainer:
+    command: '-H unix:///var/run/docker.sock'
+    deploy:
+      labels: {
+        traefik.docker.network: traefik,
+        traefik.frontend.rule: 'Host:portainer.lrnz09.me',
+        traefik.port: 9000
+      }
+      placement:
+        constraints: [node.role == manager]
+    image: portainer/portainer
+    networks: [traefik_default]
+    volumes: [
+      '/var/run/docker.sock:/var/run/docker.sock',
+      './data:/data'
+    ]
+
+networks:
+
+  traefik_default:
+    external: true
