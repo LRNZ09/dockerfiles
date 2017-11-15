@@ -5,7 +5,7 @@ services:
   traefik:
     deploy:
       labels: {
-        traefik.docker.network: traefik,
+        traefik.docker.network: traefik_default,
         traefik.frontend.rule: 'Host:traefik.lrnz09.me',
         traefik.port: 8080
       }
