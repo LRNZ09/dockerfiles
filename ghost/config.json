@@ -12,7 +12,7 @@
   },
   "mail": {
     "transport": "SMTP",
-    "from": "noreply@mail.lrnz09.me",
+    "from": "noreply@lrnz09.me",
     "options": {
       "service": "Mailgun",
       "port": 2525,

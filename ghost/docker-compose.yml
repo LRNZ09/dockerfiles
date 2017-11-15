@@ -4,16 +4,16 @@ services:
 
   ghost:
     deploy:
+      labels: {
+        traefik.frontend.rule: 'Host:lrnz09.me',
+        traefik.port: 80
+      }
       mode: replicated
+      # restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
+      # update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
       replicas: 3
-      restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
-      update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
     image: ghost:alpine
-    labels:
-      traefik.port: 80
-      traefik.frontend.rule: "Host:lrnz09.me"
     networks: [traefik_default]
-    restart: on-failure
     volumes: [
       './config.json:/var/lib/ghost/config.production.json',
       './content:/var/lib/ghost/content'

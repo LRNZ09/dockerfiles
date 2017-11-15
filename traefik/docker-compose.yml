@@ -3,11 +3,17 @@ version: '3.4'
 services:
 
   traefik:
-    command: --docker --docker.swarmmode --docker.domain=lrnz09.me --docker.watch --logLevel=DEBUG --web
     deploy:
+      labels: {
+        traefik.docker.network: traefik,
+        traefik.frontend.rule: 'Host:traefik.lrnz09.me',
+        traefik.port: 8080
+      }
       placement:
         constraints: [node.role == manager]
     image: traefik:alpine
-    ports: ['80:80', '8080:8080']
-    restart: on-failure
-    volumes: ['/var/run/docker.sock:/var/run/docker.sock']
+    ports: ['80:80']
+    volumes: [
+      '/var/run/docker.sock:/var/run/docker.sock',
+      './traefik.toml:/etc/traefik/traefik.toml'
+    ]

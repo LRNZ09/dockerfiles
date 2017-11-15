@@ -8,9 +8,6 @@ services:
       mode: replicated
       placement:
         constraints: [node.role == manager]
-      replicas: 1
-      restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
-      update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
     image: itzg/bungeecord
     ports: ['2052:25577', '2052:25577/udp']
     restart: on-failure
@@ -21,9 +18,6 @@ services:
       mode: replicated
       placement:
         constraints: [node.role == worker]
-      replicas: 1
-      restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
-      update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
     environment: {
       ALLOW_NETHER: 'true',
       CONSOLE: 'false',
@@ -43,7 +37,7 @@ services:
       SPAWN_ANIMALS: 'true',
       SPAWN_MONSTERS: 'true',
       SPAWN_NPCS: 'true',
-      SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar',
+      SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-$$VANILLA_VERSION.jar',
       TYPE: spigot,
       VIEW_DISTANCE: '9'
     }
