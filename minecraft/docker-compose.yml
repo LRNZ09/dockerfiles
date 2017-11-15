@@ -3,19 +3,15 @@ version: '3.4'
 services:
 
   bungeecord:
-    depends_on: [spigot]
     deploy:
-      mode: replicated
       placement:
         constraints: [node.role == manager]
     image: itzg/bungeecord
     ports: ['2052:25577', '2052:25577/udp']
-    restart: on-failure
     volumes: ['./bungeecord/:/server']
 
   spigot:
     deploy:
-      mode: replicated
       placement:
         constraints: [node.role == worker]
     environment: {
@@ -37,11 +33,9 @@ services:
       SPAWN_ANIMALS: 'true',
       SPAWN_MONSTERS: 'true',
       SPAWN_NPCS: 'true',
-      SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-$$VANILLA_VERSION.jar',
+      SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar',
       TYPE: spigot,
       VIEW_DISTANCE: '9'
     }
-    expose: ['25565']
     image: itzg/minecraft-server
-    restart: on-failure
     volumes: ['./spigot:/data']
