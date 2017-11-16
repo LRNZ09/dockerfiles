@@ -15,24 +15,17 @@ services:
       placement:
         constraints: [node.role == worker]
     environment: {
-      ALLOW_NETHER: 'true',
       CONSOLE: 'false',
       DIFFICULTY: hard,
       EULA: 'true',
-      FORCE_GAMEMODE: 'true',
-      GENERATE_STRUCTURES: 'true',
       GUI: 'false',
       JVM_XX_OPTS: '-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts',
-      LEVEL: world,
       MEMORY: 1G,
       MODE: survival,
       ONLINE_MODE: 'false',
-      OPS: lrnz09,
+      OPS: LRNZ09,
       PVP: 'false',
-      SEED: '-2130460257',
-      SPAWN_ANIMALS: 'true',
-      SPAWN_MONSTERS: 'true',
-      SPAWN_NPCS: 'true',
+      SEED: '105899026',
       SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar',
       TYPE: spigot,
       VIEW_DISTANCE: '9'
