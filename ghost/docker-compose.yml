@@ -5,21 +5,29 @@ services:
   ghost:
     deploy:
       labels: {
-        traefik.frontend.rule: 'Host:lrnz09.me',
-        traefik.port: 80
+        traefik.frontend.rule: 'Host:blog.lrnz09.me',
+        traefik.port: 2368
       }
       mode: replicated
       # restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
       # update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
       replicas: 3
+    entrypoint: /tmp/docker-entrypoint.sh
     image: ghost:alpine
     networks: [traefik_default]
+    secrets: [ghost_mailgun_pass]
     volumes: [
       './config.json:/var/lib/ghost/config.production.json',
-      './content:/var/lib/ghost/content'
+      './content:/var/lib/ghost/content',
+      './docker-entrypoint.sh:/tmp/docker-entrypoint.sh',
     ]
 
 networks:
 
   traefik_default:
+    external: true
+
+secrets:
+
+  ghost_mailgun_pass:
     external: true
