@@ -5,6 +5,7 @@ services:
   ghost:
     deploy:
       labels: {
+        traefik.docker.network: traefik_default,
         traefik.frontend.rule: 'Host:blog.lrnz09.me',
         traefik.port: 2368
       }
@@ -17,7 +18,7 @@ services:
     networks: [traefik_default]
     secrets: [ghost_mailgun_pass]
     volumes: [
-      './config.json:/var/lib/ghost/config.production.json',
+      './config.json:/var/lib/ghost/config.json',
       './content:/var/lib/ghost/content',
       './docker-entrypoint.sh:/tmp/docker-entrypoint.sh',
     ]
