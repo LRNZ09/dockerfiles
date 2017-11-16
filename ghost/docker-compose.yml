@@ -9,7 +9,6 @@ services:
         traefik.frontend.rule: 'Host:blog.lrnz09.me',
         traefik.port: 2368
       }
-      mode: replicated
       # restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
       # update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
       replicas: 3
