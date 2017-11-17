@@ -89,7 +89,7 @@ address = ":80"
 # Required
 # Default: ":8080"
 #
-address = ":8080"
+address = ":7999"
 
 # SSL certificate and key used.
 #
