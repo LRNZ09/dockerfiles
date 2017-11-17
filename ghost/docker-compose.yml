@@ -6,12 +6,12 @@ services:
     deploy:
       labels: {
         traefik.docker.network: traefik_default,
-        traefik.frontend.rule: 'Host: blog.lrnz09.me, ghost.lrnz09.me',
+        traefik.frontend.rule: 'Host: blog.lrnz09.me',
         traefik.port: 2368
       }
       # restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
       # update_config: {delay: 10s, failure_action: rollback, order: start-first, parallelism: 2}
-      replicas: 1
+      replicas: 2
     entrypoint: /tmp/docker-entrypoint.sh
     image: ghost:alpine
     networks: [default, traefik_default]
@@ -33,15 +33,15 @@ services:
     volumes: ['./percona:/var/lib/mysql']
     secrets: [ghost_percona_pass]
 
-  adminer:
-    image: adminer
-    deploy:
-      labels: {
-        traefik.docker.network: traefik_default,
-        traefik.frontend.rule: 'Host: adminer.lrnz09.me',
-        traefik.port: 8080
-      }
-    networks: [default, traefik_default]
+  # adminer:
+  #   image: adminer
+  #   deploy:
+  #     labels: {
+  #       traefik.docker.network: traefik_default,
+  #       traefik.frontend.rule: 'Host: adminer.lrnz09.me',
+  #       traefik.port: 8080
+  #     }
+  #   networks: [default, traefik_default]
 
 networks:
 

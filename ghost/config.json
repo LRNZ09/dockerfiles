@@ -1,8 +1,5 @@
 {
   "url": "https://blog.lrnz09.me/",
-  "admin": {
-    "url": "https://ghost.lrnz09.me/"
-  },
   "server": {
     "port": 2368,
     "host": "0.0.0.0"
