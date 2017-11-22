@@ -7,6 +7,7 @@ services:
       labels: {
         traefik.docker.network: traefik_default,
         traefik.frontend.rule: 'Host: blog.lrnz09.me',
+        traefik.frontend.rule: 'Host: blog.lrnz09.me',
         traefik.port: 2368
       }
       # restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}

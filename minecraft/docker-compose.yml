@@ -16,19 +16,17 @@ services:
         constraints: [node.role == worker]
     environment: {
       CONSOLE: 'false',
-      DIFFICULTY: hard,
       EULA: 'true',
       GUI: 'false',
       JVM_XX_OPTS: '-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts',
       MEMORY: 1G,
-      MODE: survival,
       ONLINE_MODE: 'false',
       OPS: LRNZ09,
       PVP: 'false',
-      SEED: '105899026',
+      SEED: '-2130460257',
       SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar',
       TYPE: spigot,
-      VIEW_DISTANCE: '9'
+      VIEW_DISTANCE: '12'
     }
     image: itzg/minecraft-server
     volumes: ['./spigot:/data']

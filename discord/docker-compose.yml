@@ -1,8 +1,0 @@
-version: '2.1'
-
-services:
-
-  musicbot:
-    image: lrnz09/discord-musicbot
-    volumes: ['./discord-musicbot/config:/app/config']
-    restart: always
