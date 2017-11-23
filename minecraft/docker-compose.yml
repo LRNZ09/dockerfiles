@@ -10,7 +10,7 @@ services:
     ports: ['2052:25577', '2052:25577/udp']
     volumes: ['./bungeecord/:/server']
 
-  spigot:
+  vanilla:
     deploy:
       placement:
         constraints: [node.role == worker]
@@ -23,10 +23,8 @@ services:
       ONLINE_MODE: 'false',
       OPS: LRNZ09,
       PVP: 'false',
-      SEED: '-2130460257',
-      SPIGOT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar',
-      TYPE: spigot,
-      VIEW_DISTANCE: '12'
+      SEED: '4388092437280786657',
+      VIEW_DISTANCE: '13'
     }
     image: itzg/minecraft-server
-    volumes: ['./spigot:/data']
+    volumes: ['./vanilla:/data']

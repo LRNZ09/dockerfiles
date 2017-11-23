@@ -2,16 +2,16 @@ connection_throttle: 4000
 disabled_commands: []
 groups:
   LRNZ09: [admin]
-ip_forward: true
+ip_forward: false
 listeners:
 - bind_local_address: true
   force_default_server: true
-  forced_hosts: {minecraft.lrnz09.me: lobby}
+  forced_hosts: {minecraft.lrnz09.me: default}
   host: 0.0.0.0:25577
-  max_players: 9
+  max_players: 4
   motd: "              &fA &acreeper &fwalks into a bar... \n                    &f&lEveryone &c&ldies&f&l."
   ping_passthrough: false
-  priorities: [lobby]
+  priorities: [default]
   proxy_protocol: false
   query_enabled: true
   query_port: 25577
@@ -32,8 +32,8 @@ permissions:
 player_limit: -1
 prevent_proxy_connections: true
 servers:
-  lobby: {
-    address: 'spigot:25565',
+  default: {
+    address: 'vanilla:25565',
     motd: "              &fA &acreeper &fwalks into a bar... \n                    &f&lEveryone &c&ldies&f&l.",
     restricted: false
   }
