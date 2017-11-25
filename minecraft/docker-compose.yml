@@ -24,7 +24,6 @@ services:
       OPS: LRNZ09,
       PVP: 'false',
       SEED: '4388092437280786657',
-      VIEW_DISTANCE: '13'
     }
     image: itzg/minecraft-server
     volumes: ['./vanilla:/data']
