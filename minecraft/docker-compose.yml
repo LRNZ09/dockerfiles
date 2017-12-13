@@ -15,7 +15,7 @@ services:
       placement:
         constraints: [node.role == worker]
     environment: {
-      BUILD_FROM_SOURCE: 'true',
+      BUKKIT_DOWNLOAD_URL: 'https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.12.2.jar',
       CONSOLE: 'false',
       EULA: 'true',
       GUI: 'false',
