@@ -10,20 +10,25 @@ services:
     ports: ['2052:25577', '2052:25577/udp']
     volumes: ['./bungeecord/:/server']
 
-  vanilla:
+  server:
     deploy:
       placement:
         constraints: [node.role == worker]
     environment: {
+      BUILD_FROM_SOURCE: 'true',
       CONSOLE: 'false',
       EULA: 'true',
       GUI: 'false',
-      JVM_XX_OPTS: '-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts',
+      JVM_XX_OPTS: '-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=50
+        -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80
+        -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AggressiveOpts',
       MEMORY: 1G,
       ONLINE_MODE: 'false',
       OPS: LRNZ09,
       PVP: 'false',
       SEED: '4388092437280786657',
+      TYPE: bukkit,
+      WHITELIST: LRNZ09 PikateaYt
     }
     image: itzg/minecraft-server
-    volumes: ['./vanilla:/data']
+    volumes: ['./server:/data']

@@ -33,7 +33,7 @@ player_limit: -1
 prevent_proxy_connections: true
 servers:
   default: {
-    address: 'vanilla:25565',
+    address: 'server:25565',
     motd: "              &fA &acreeper &fwalks into a bar... \n                    &f&lEveryone &c&ldies&f&l.",
     restricted: false
   }
