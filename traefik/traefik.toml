@@ -123,7 +123,7 @@ endpoint = "unix:///var/run/docker.sock"
 #
 # Required
 #
-domain = "lrnz09.me"
+domain = "lorenzo.cf"
 
 # Enable watch docker changes.
 #

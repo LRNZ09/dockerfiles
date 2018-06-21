@@ -6,7 +6,7 @@ ip_forward: false
 listeners:
 - bind_local_address: true
   force_default_server: true
-  forced_hosts: {minecraft.lrnz09.me: default}
+  forced_hosts: {minecraft.lorenzo.cf: default}
   host: 0.0.0.0:25577
   max_players: 4
   motd: "              &fA &acreeper &fwalks into a bar... \n                    &f&lEveryone &c&ldies&f&l."

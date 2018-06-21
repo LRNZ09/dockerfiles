@@ -28,7 +28,7 @@ services:
       PVP: 'false',
       SEED: '4388092437280786657',
       TYPE: bukkit,
-      WHITELIST: LRNZ09 PikateaYt
+      WHITELIST: 'LRNZ09 PikateaYt'
     }
     image: itzg/minecraft-server
     volumes: ['./server:/data']

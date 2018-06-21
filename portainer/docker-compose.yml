@@ -7,7 +7,7 @@ services:
     deploy:
       labels: {
         traefik.docker.network: traefik_default,
-        traefik.frontend.rule: 'Host: portainer.lrnz09.me',
+        traefik.frontend.rule: 'Host: portainer.lorenzo.cf',
         traefik.port: 9000
       }
       placement:

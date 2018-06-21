@@ -6,8 +6,7 @@ services:
     deploy:
       labels: {
         traefik.docker.network: traefik_default,
-        traefik.frontend.rule: 'Host: blog.lrnz09.me',
-        traefik.frontend.rule: 'Host: blog.lrnz09.me',
+        traefik.frontend.rule: 'Host: blog.lorenzo.cf',
         traefik.port: 2368
       }
       # restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 10s}
@@ -39,7 +38,7 @@ services:
   #   deploy:
   #     labels: {
   #       traefik.docker.network: traefik_default,
-  #       traefik.frontend.rule: 'Host: adminer.lrnz09.me',
+  #       traefik.frontend.rule: 'Host: adminer.lorenzo.cf',
   #       traefik.port: 8080
   #     }
   #   networks: [default, traefik_default]

@@ -1,5 +1,5 @@
 {
-  "url": "https://blog.lrnz09.me/",
+  "url": "https://blog.lorenzo.cf/",
   "server": {
     "port": 2368,
     "host": "0.0.0.0"
@@ -16,12 +16,12 @@
   },
   "mail": {
     "transport": "SMTP",
-    "from": "noreply@lrnz09.me",
+    "from": "noreply@lorenzo.cf",
     "options": {
       "service": "Mailgun",
       "port": 2525,
       "auth": {
-        "user": "postmaster@mail.lrnz09.me",
+        "user": "postmaster@mail.lorenzo.cf",
         "pass": ""
       }
     }
