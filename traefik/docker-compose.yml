@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.6'
 
 services:
 
@@ -14,6 +14,6 @@ services:
     image: traefik:alpine
     ports: ['80:80']
     volumes: [
-      '/var/run/docker.sock:/var/run/docker.sock',
-      './traefik.toml:/etc/traefik/traefik.toml'
+      '/home/lrnz09/docker/traefik/traefik.toml:/etc/traefik/traefik.toml',
+      '/var/run/docker.sock:/var/run/docker.sock'
     ]

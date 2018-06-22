@@ -1,9 +1,21 @@
-version: '3.4'
+version: '3.6'
 
 services:
 
+  agent:
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+    environment:
+      AGENT_CLUSTER_ADDR: agent
+      # AGENT_PORT: 9001
+      # LOG_LEVEL: debug
+    image: portainer/agent
+    volumes: ['/var/run/docker.sock:/var/run/docker.sock']
+
   portainer:
-    command: '-H unix:///var/run/docker.sock'
+    command: -H tcp://agent:9001 --tlsskipverify
     deploy:
       labels: {
         traefik.docker.network: traefik_default,
@@ -13,13 +25,12 @@ services:
       placement:
         constraints: [node.role == manager]
     image: portainer/portainer
-    networks: [traefik_default]
-    volumes: [
-      '/var/run/docker.sock:/var/run/docker.sock',
-      './data:/data'
-    ]
+    volumes: ['portainer_data:/data']
 
 networks:
-
-  traefik_default:
+  default:
     external: true
+    name: traefik_default
+
+volumes:
+  portainer_data:
