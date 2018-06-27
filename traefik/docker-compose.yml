@@ -3,17 +3,15 @@ version: '3.6'
 services:
 
   traefik:
+    command: traefik --api --docker --docker.domain="lorenzo.cf" --docker.swarmmode
     deploy:
       labels: {
         traefik.docker.network: traefik_default,
         traefik.frontend.rule: 'Host: traefik.lorenzo.cf',
-        traefik.port: 7999
+        traefik.port: 8080
       }
       placement:
         constraints: [node.role == manager]
     image: traefik:alpine
     ports: ['80:80']
-    volumes: [
-      '/home/lrnz09/docker/traefik/traefik.toml:/etc/traefik/traefik.toml',
-      '/var/run/docker.sock:/var/run/docker.sock'
-    ]
+    volumes: ['/var/run/docker.sock:/var/run/docker.sock']
