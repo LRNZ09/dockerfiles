@@ -1,15 +1,6 @@
 version: '3.6'
 
 services:
-
-  # bungeecord:
-  #   deploy:
-  #     placement:
-  #       constraints: [node.role == manager]
-  #   image: itzg/bungeecord
-  #   ports: ['2052:25577', '2052:25577/udp']
-  #   volumes: ['./bungeecord/:/server']
-
   server:
     deploy:
       mode: global
@@ -28,7 +19,7 @@ services:
       PVP: 'false',
       SEED: '871585827',
       # TYPE: bukkit,
-      VERSION: snapshot
+      # VERSION: snapshot
       # WHITELIST: 'LRNZ09 PikateaYt'
     }
     image: itzg/minecraft-server
