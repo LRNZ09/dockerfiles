@@ -1,0 +1,10 @@
+version: '3.6'
+
+services:
+  teamspeak:
+    deploy:
+      mode: global
+    environment: 
+      TS3SERVER_LICENSE: accept
+    image: teamspeak
+    ports: ['2095:9987/udp', '10011:10011', '30033:30033']
