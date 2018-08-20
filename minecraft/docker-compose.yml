@@ -3,9 +3,7 @@ version: '3.6'
 services:
   server:
     deploy:
-      mode: global
-      # placement:
-      #   constraints: [node.role == worker]
+      replicas: 1
     environment: {
       CONSOLE: 'false',
       EULA: 'true',

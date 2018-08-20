@@ -4,9 +4,9 @@ services:
 
   agent:
     deploy:
-      mode: global
       placement:
         constraints: [node.role == manager]
+      replicas: 1
     environment:
       AGENT_CLUSTER_ADDR: agent
       # AGENT_PORT: 9001
@@ -22,8 +22,6 @@ services:
         traefik.frontend.rule: 'Host: portainer.lorenzo.cf',
         traefik.port: 9000
       }
-      placement:
-        constraints: [node.role == manager]
     image: portainer/portainer
     volumes: ['portainer_data:/data']
 

@@ -1,9 +1,10 @@
 version: '3.6'
 
 services:
-
   traefik:
-    command: traefik --api --docker --docker.domain="lorenzo.cf" --docker.swarmmode
+    command: --api --defaultentrypoints="https,http" --docker --docker.domain="lorenzo.cf"
+      --docker.swarmmode --entrypoints="Name:http Address::80 Redirect.EntryPoint:https"
+      --entrypoints="Name:https Address::443 TLS:/run/secrets/traefik.crt,/run/secrets/traefik.key"
     deploy:
       labels: {
         traefik.docker.network: traefik_default,
@@ -12,6 +13,14 @@ services:
       }
       placement:
         constraints: [node.role == manager]
+      replicas: 1
     image: traefik:alpine
-    ports: ['80:80']
+    ports: ['80:80', '443:443']
+    secrets: [traefik.crt, traefik.key]
     volumes: ['/var/run/docker.sock:/var/run/docker.sock']
+
+secrets:
+  traefik.crt:
+    external: true
+  traefik.key:
+    external: true

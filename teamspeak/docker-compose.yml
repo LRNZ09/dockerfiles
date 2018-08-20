@@ -3,7 +3,7 @@ version: '3.6'
 services:
   teamspeak:
     deploy:
-      mode: global
+      replicas: 1
     environment: 
       TS3SERVER_LICENSE: accept
     image: teamspeak
